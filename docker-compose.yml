@@ -1,0 +1,14 @@
+services:
+  tools:
+    build: .
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared-tools
+    command: tunnel --no-autoupdate run --token ${TUNNEL_TOKEN}
+    restart: unless-stopped
+    depends_on:
+      - tools
