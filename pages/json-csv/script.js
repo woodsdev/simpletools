@@ -197,6 +197,9 @@ function csvToJSON(text, delim, headers, pretty) {
   const copyBtn = $('btn-copy');
 
   let outputKind = 'csv'; // what the output textarea currently holds
+  // The textarea API normalises \r\n to \n, so Copy/Download use the raw
+  // string to keep RFC 4180 CRLF line endings intact.
+  let outputRaw = '';
 
   function isJsonToCsv() {
     return dirJ2C.checked;
@@ -237,12 +240,14 @@ function csvToJSON(text, delim, headers, pretty) {
 
     if (result.error) {
       setError(result.error);
+      outputRaw = '';
       outEl.value = '';
       statsEl.textContent = '';
       return;
     }
     setError('');
     outputKind = isJsonToCsv() ? 'csv' : 'json';
+    outputRaw = result.output;
     outEl.value = result.output;
     statsEl.textContent = result.stats;
   }
@@ -272,13 +277,13 @@ function csvToJSON(text, delim, headers, pretty) {
   });
 
   copyBtn.addEventListener('click', () => {
-    if (!outEl.value) return;
+    if (!outputRaw) return;
     const done = () => {
       copyBtn.textContent = 'Copied ✓';
       setTimeout(() => { copyBtn.textContent = 'Copy'; }, 1500);
     };
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(outEl.value).then(done, () => {
+      navigator.clipboard.writeText(outputRaw).then(done, () => {
         outEl.select();
         done();
       });
@@ -290,8 +295,8 @@ function csvToJSON(text, delim, headers, pretty) {
   });
 
   $('btn-download').addEventListener('click', () => {
-    if (!outEl.value) return;
-    const blob = new Blob([outEl.value], {
+    if (!outputRaw) return;
+    const blob = new Blob([outputRaw], {
       type: outputKind === 'csv' ? 'text/csv;charset=utf-8' : 'application/json;charset=utf-8'
     });
     const url = URL.createObjectURL(blob);
