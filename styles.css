@@ -279,6 +279,22 @@ h1 {
   background: var(--field-invalid);
 }
 
+/* Computed (non-driver) fields on the markup & margin calculator */
+.field input.computed {
+  background: var(--tint);
+  border-color: var(--tint-line);
+}
+
+.calc-flag {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-ink);
+  margin-left: 6px;
+}
+
 .field-error {
   margin: 6px 0 0;
   font-size: 12px;
