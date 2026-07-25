@@ -41,6 +41,30 @@
   --tint-line: #f6cfe5;
 }
 
+.theme-orange {
+  --accent: #f97316;
+  --accent-ink: #c2410c;
+  --accent-rgb: 249, 115, 22;
+  --tint: #fff4ec;
+  --tint-line: #f8d8bd;
+}
+
+.theme-blue {
+  --accent: #4c6ef5;
+  --accent-ink: #3b5bdb;
+  --accent-rgb: 76, 110, 245;
+  --tint: #eff3fe;
+  --tint-line: #cdd9f8;
+}
+
+.theme-purple {
+  --accent: #a855f7;
+  --accent-ink: #7e22ce;
+  --accent-rgb: 168, 85, 247;
+  --tint: #f8f1fe;
+  --tint-line: #e6d4f8;
+}
+
 * {
   box-sizing: border-box;
 }
