@@ -252,8 +252,21 @@ function csvToJSON(text, delim, headers, pretty) {
     statsEl.textContent = result.stats;
   }
 
-  dirJ2C.addEventListener('change', applyDirection);
-  dirC2J.addEventListener('change', applyDirection);
+  function onDirectionChange() {
+    // Swap the two boxes so the last result feeds the next conversion.
+    if (outEl.value) {
+      const prevIn = inEl.value;
+      inEl.value = outEl.value;
+      outEl.value = prevIn;
+      outputRaw = prevIn;
+      outputKind = isJsonToCsv() ? 'csv' : 'json';
+      statsEl.textContent = '';
+    }
+    applyDirection();
+  }
+
+  dirJ2C.addEventListener('change', onDirectionChange);
+  dirC2J.addEventListener('change', onDirectionChange);
 
   $('btn-convert').addEventListener('click', convert);
 
