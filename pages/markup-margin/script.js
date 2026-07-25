@@ -53,6 +53,8 @@ function compute(drivers, v) {
   // Most-recent-last; the last two entries are the knowns everything else
   // is calculated from.
   let editOrder = ['cost', 'sale'];
+  // No computed styling until the user has actually typed something.
+  let interacted = false;
 
   const moneyFormatters = {};
   const money = (v) => {
@@ -127,7 +129,7 @@ function compute(drivers, v) {
     const computed = FIELDS.filter((f) => !drivers.includes(f));
 
     computed.forEach((f) => {
-      markComputed(f, true);
+      markComputed(f, interacted);
       setError(f, '');
     });
     drivers.forEach((f) => markComputed(f, false));
@@ -181,8 +183,8 @@ function compute(drivers, v) {
 
   FIELDS.forEach((f) => {
     const el = els[f];
-    el.addEventListener('input', () => { promote(f); refresh(); });
-    el.addEventListener('change', () => { promote(f); refresh(); });
+    el.addEventListener('input', () => { interacted = true; promote(f); refresh(); });
+    el.addEventListener('change', () => { interacted = true; promote(f); refresh(); });
     el.addEventListener('blur', () => { touched[f] = true; refresh(); });
   });
   currencyEl.addEventListener('change', refresh);
