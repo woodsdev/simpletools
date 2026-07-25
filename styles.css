@@ -621,9 +621,17 @@ h1 {
 /* ---- hub cards ---- */
 
 .hub-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  --hub-w: min(1120px, calc(100vw - 40px));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
+  width: var(--hub-w);
+  margin-left: calc(50% - var(--hub-w) / 2);
+}
+
+.hub-grid .tool-card {
+  flex: 0 1 calc((100% - 40px) / 3);
 }
 
 .tool-card {
@@ -866,6 +874,10 @@ footer {
   .conv-grid {
     grid-template-columns: 1fr;
   }
+
+  .hub-grid .tool-card {
+    flex-basis: calc((100% - 20px) / 2);
+  }
 }
 
 @media (max-width: 560px) {
@@ -873,7 +885,10 @@ footer {
     flex-basis: 100%;
   }
 
-  .hub-grid,
+  .hub-grid .tool-card {
+    flex-basis: 100%;
+  }
+
   .mini-grid {
     grid-template-columns: 1fr;
   }
