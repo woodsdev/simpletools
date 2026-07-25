@@ -15,6 +15,32 @@
   --body: system-ui, "Segoe UI", -apple-system, sans-serif;
 }
 
+/* Per-page / per-card accent themes. Applied to <body> to theme a page,
+   or to any element (e.g. a hub card) to theme just that subtree. */
+.theme-red {
+  --accent: #e5484d;
+  --accent-ink: #c02a30;
+  --accent-rgb: 229, 72, 77;
+  --tint: #fdf1f1;
+  --tint-line: #f6d2d3;
+}
+
+.theme-green {
+  --accent: #28b463;
+  --accent-ink: #1b7a44;
+  --accent-rgb: 40, 180, 99;
+  --tint: #eefaf3;
+  --tint-line: #cfeeda;
+}
+
+.theme-pink {
+  --accent: #ec4899;
+  --accent-ink: #c02576;
+  --accent-rgb: 236, 72, 153;
+  --tint: #fdf0f7;
+  --tint-line: #f6cfe5;
+}
+
 * {
   box-sizing: border-box;
 }
