@@ -45,6 +45,11 @@
   box-sizing: border-box;
 }
 
+/* The hidden attribute must win over any display rule (e.g. .conv-opts flex). */
+[hidden] {
+  display: none !important;
+}
+
 body {
   margin: 0;
   font-family: var(--body);
