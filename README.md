@@ -5,6 +5,7 @@ A small collection of single-purpose tools that run entirely in the browser. No 
 Current tools:
 
 - JSON to CSV converter (works in both directions)
+- JSON beautifier / minifier
 - Markup & margin calculator
 - Percentage calculators
 - Co-term pricing calculator

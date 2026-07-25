@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JSON Beautifier • woodsdev</title>
+  <meta name="description" content="Pretty-print or minify JSON entirely in your browser, with your choice of indentation.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%234c6ef5'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="theme-blue">
+
+  <header class="site-head">
+    <a class="brand" href="/">
+      <span class="logo-mark" role="img" aria-label="Harley Woods Software Development"></span>
+      <span class="wordmark"><strong>woodsdev</strong><span class="sep" aria-hidden="true"></span>Simple Tools</span>
+    </a>
+    <nav class="site-nav" aria-label="Tools">
+      <a href="/">Home</a>
+      <a href="/pages/json-csv/">JSON ⇄ CSV</a>
+      <a href="/pages/json-beautifier/" aria-current="page">JSON Beautifier</a>
+      <a href="/pages/markup-margin/">Markup &amp; Margin</a>
+      <a href="/pages/percentage/">Percentages</a>
+      <a href="/pages/coterm-pricing/">Co-term Pricing</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="intro">
+      <p class="eyebrow">Data · Format</p>
+      <h1>JSON Beautifier</h1>
+      <p class="lede">Paste or upload JSON and get it neatly formatted with your choice of indentation. Minify works too, and nothing leaves your browser.</p>
+    </div>
+
+    <section class="panel conv-panel">
+
+      <div class="conv-controls">
+        <div class="field">
+          <label for="indent">Indent</label>
+          <select id="indent">
+            <option value="2" selected>2 spaces</option>
+            <option value="4">4 spaces</option>
+            <option value="tab">Tabs</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="conv-grid">
+
+        <div class="conv-pane field">
+          <label for="fmt-in">JSON input</label>
+          <textarea id="fmt-in" spellcheck="false" aria-describedby="fmt-err" placeholder='{"name":"Ada","languages":["APL","Fortran"]}'></textarea>
+          <p class="field-error" id="fmt-err" aria-live="polite" hidden></p>
+          <div class="btn-row">
+            <button type="button" class="btn btn-primary" id="btn-beautify">Beautify</button>
+            <button type="button" class="btn" id="btn-minify">Minify</button>
+            <label class="btn file-btn">Upload file<input type="file" id="fmt-file" class="visually-hidden" accept=".json,.txt,application/json,text/plain"></label>
+            <button type="button" class="btn" id="btn-clear">Clear</button>
+          </div>
+        </div>
+
+        <div class="conv-pane field">
+          <label for="fmt-out">Formatted output</label>
+          <textarea id="fmt-out" spellcheck="false" readonly placeholder="The result appears here."></textarea>
+          <p class="conv-stats" id="fmt-stats" aria-live="polite"></p>
+          <div class="btn-row">
+            <button type="button" class="btn" id="btn-copy">Copy</button>
+            <button type="button" class="btn" id="btn-download">Download</button>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="form-note">Everything runs locally in your browser and nothing is uploaded. Keys stay in the order they appear in the input.</p>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <span class="foot-mark" aria-hidden="true"></span>
+        <p class="foot-name">Harley Woods</p>
+        <p class="foot-sub">Software Development</p>
+      </div>
+      <div class="foot-text">
+        <p class="foot-strong">A personal project by Harley Woods.</p>
+        <p>All tools run entirely in your browser. Nothing you enter is uploaded or stored.</p>
+        <p>Provided "as is", without warranty of any kind. I accept no liability for any loss, damage, or costs arising from use of these tools or from decisions based on their output.</p>
+        <p><a class="foot-gh" href="https://github.com/woodsdev">github.com/woodsdev</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/pages/json-beautifier/script.js"></script>
+</body>
+</html>
