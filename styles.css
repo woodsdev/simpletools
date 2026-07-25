@@ -1,0 +1,506 @@
+:root {
+  --ink: #0e2433;
+  --ink-soft: #5b6b7c;
+  --line: #e3eaf0;
+  --field-line: #d5dfe7;
+  --field-invalid: #fdf3f2;
+  --accent: #00b4d8;
+  --accent-ink: #00799c;
+  --accent-rgb: 0, 180, 216;
+  --tint: #eef8fb;
+  --tint-line: #cfe9f2;
+  --error: #d92d20;
+  --display: "Montserrat", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", "Consolas", monospace;
+  --body: system-ui, "Segoe UI", -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--body);
+  font-size: 15px;
+  line-height: 1.4;
+  background: #ffffff;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(var(--accent-rgb), 0.25);
+}
+
+.mark {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  background: var(--accent);
+  flex: none;
+}
+
+/* ---- header ---- */
+
+.site-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  padding: 12px clamp(20px, 4vw, 48px);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* hw-mark.png (720x564, flat colour on transparency) is used as a mask so
+   the monogram takes the page accent colour. Regenerate it if
+   assets/images/_harleywoods_logo_with_text_no_bg.png changes. */
+.logo-mark {
+  display: block;
+  height: 36px;
+  aspect-ratio: 720 / 564;
+  flex: none;
+  background: var(--accent);
+  -webkit-mask: url(/assets/images/hw-mark.png) no-repeat center / contain;
+  mask: url(/assets/images/hw-mark.png) no-repeat center / contain;
+}
+
+.wordmark {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  margin: 0;
+  font-family: var(--display);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.wordmark strong {
+  font-weight: 800;
+}
+
+.wordmark .sep {
+  width: 1px;
+  height: 18px;
+  margin: 0 12px;
+  background: var(--field-line);
+  flex: none;
+}
+
+/* ---- intro ---- */
+
+main {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: clamp(28px, 5vw, 52px) 20px 44px;
+}
+
+.intro {
+  max-width: 580px;
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent-ink);
+}
+
+h1 {
+  margin: 10px 0 10px;
+  font-family: var(--display);
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.lede {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+/* ---- layout ---- */
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 28px;
+}
+
+/* ---- panels & form ---- */
+
+.panel {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(14, 36, 51, 0.04);
+}
+
+.form-panel {
+  padding: 28px;
+}
+
+.panel-eyebrow,
+.qgroup-label {
+  margin: 0 0 18px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-soft);
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 16px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.unit {
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 9px 12px;
+  font-family: var(--mono);
+  font-size: 14.5px;
+  color: var(--ink);
+  background: #ffffff;
+  border: 1px solid var(--field-line);
+  border-radius: 10px;
+  transition: border-color 0.15s, background-color 0.15s, box-shadow 0.15s;
+}
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-color: #b9cbd8;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.18);
+}
+
+.field input[aria-invalid="true"],
+.field textarea[aria-invalid="true"] {
+  border-color: var(--error);
+  background: var(--field-invalid);
+}
+
+.field-error {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--error);
+}
+
+.form-note {
+  margin: 20px 0 0;
+  padding-top: 16px;
+  border-top: 1px dashed var(--line);
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+/* ---- quote slip ---- */
+
+.quote {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background: var(--tint);
+}
+
+.quote-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.quote-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+}
+
+.quote-days {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent-ink);
+}
+
+.quote-basis {
+  margin: 6px 0 18px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.quote .qgroup-label {
+  margin: 16px 0 4px;
+}
+
+.qrows {
+  margin: 0;
+}
+
+.qrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--tint-line);
+}
+
+.qrow dt {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.qrow dd {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+/* Receipt tear line: white notches punched into the slip's edges.
+   margin-top: auto pins the tear + total to the ticket's bottom edge
+   when the ticket stretches to match the form panel's height. */
+.quote .qrows:last-of-type {
+  margin-bottom: 12px;
+}
+
+/* Bleeds 1px past the padding box, over the ticket's own border, so the
+   white cutout erases the straight border and the arc ring redraws it
+   curving into the groove. */
+.tear {
+  flex: none;
+  height: 20px;
+  margin: auto -25px 6px;
+  position: relative;
+  background:
+    radial-gradient(circle at 0 50%, #ffffff 8px, var(--line) 8.6px 9.4px, transparent 10px),
+    radial-gradient(circle at 100% 50%, #ffffff 8px, var(--line) 8.6px 9.4px, transparent 10px);
+}
+
+.tear::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  right: 20px;
+  border-top: 2px dashed var(--tint-line);
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.total-label {
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.total-value {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 30px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  color: var(--accent-ink);
+}
+
+.below-cost {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: var(--error);
+}
+
+/* ---- footer ---- */
+
+footer {
+  border-top: 1px solid var(--line);
+}
+
+.foot-inner {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 28px 20px 36px;
+}
+
+.foot-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: none;
+}
+
+.foot-mark {
+  width: 84px;
+  aspect-ratio: 720 / 564;
+  background: var(--accent);
+  -webkit-mask: url(/assets/images/hw-mark.png) no-repeat center / contain;
+  mask: url(/assets/images/hw-mark.png) no-repeat center / contain;
+}
+
+.foot-name {
+  margin: 12px 0 2px;
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+
+.foot-sub {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--ink-soft);
+}
+
+.foot-text p {
+  margin: 0 0 8px;
+  max-width: 640px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.foot-text p:last-child {
+  margin-bottom: 0;
+}
+
+.foot-strong {
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.foot-gh {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+
+.foot-gh:hover {
+  text-decoration: underline;
+}
+
+/* ---- responsive ---- */
+
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .foot-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 460px) {
+  .field-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-panel,
+  .quote {
+    padding: 20px;
+  }
+
+  .tear {
+    margin-left: -21px;
+    margin-right: -21px;
+  }
+}
+
+/* ---- a11y ---- */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
