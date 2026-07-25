@@ -98,6 +98,39 @@ body {
   flex: none;
 }
 
+/* ---- nav ---- */
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 4px;
+}
+
+.site-nav a {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 6px 11px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.site-nav a:hover {
+  color: var(--ink);
+  background: var(--tint);
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--accent-ink);
+  background: var(--tint);
+  border-color: var(--tint-line);
+}
+
 /* ---- intro ---- */
 
 main {
@@ -368,6 +401,67 @@ h1 {
   color: var(--error);
 }
 
+/* ---- hub cards ---- */
+
+.hub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.tool-card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+
+.tool-card:hover {
+  border-color: var(--tint-line);
+  box-shadow: 0 4px 14px rgba(14, 36, 51, 0.08);
+  transform: translateY(-1px);
+}
+
+.card-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-soft);
+}
+
+.tool-card h2 {
+  margin: 0 0 8px;
+  font-family: var(--display);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.card-desc {
+  margin: 0 0 18px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.card-go {
+  margin: auto 0 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent-ink);
+}
+
 /* ---- footer ---- */
 
 footer {
@@ -457,6 +551,14 @@ footer {
 }
 
 @media (max-width: 560px) {
+  .site-nav {
+    flex-basis: 100%;
+  }
+
+  .hub-grid {
+    grid-template-columns: 1fr;
+  }
+
   .foot-inner {
     flex-direction: column;
     align-items: flex-start;
@@ -470,7 +572,8 @@ footer {
   }
 
   .form-panel,
-  .quote {
+  .quote,
+  .tool-card {
     padding: 20px;
   }
 
