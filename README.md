@@ -7,7 +7,7 @@ Current tools:
 - JSON to CSV converter (works in both directions)
 - Markup & margin calculator
 - Percentage calculators
-- Adobe VIP pro rata pricing calculator
+- Co-term pricing calculator
 
 Nothing you type into any of the tools leaves your machine. All the logic runs client side.
 
