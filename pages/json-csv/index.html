@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JSON ⇄ CSV Converter • woodsdev</title>
+  <meta name="description" content="Convert JSON arrays to CSV and back, entirely in your browser. Handles quoting, nesting and delimiters.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%2300b4d8'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+  <header class="site-head">
+    <a class="brand" href="/">
+      <span class="logo-mark" role="img" aria-label="Harley Woods Software Development"></span>
+      <span class="wordmark"><strong>woodsdev</strong><span class="sep" aria-hidden="true"></span>Simple Tools</span>
+    </a>
+    <nav class="site-nav" aria-label="Tools">
+      <a href="/">Home</a>
+      <a href="/pages/json-csv/" aria-current="page">JSON ⇄ CSV</a>
+      <a href="/pages/markup-margin/">Markup &amp; Margin</a>
+      <a href="/pages/percentage/">Percentages</a>
+      <a href="/pages/adobe-calculator/">Adobe</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="intro">
+      <p class="eyebrow">Data · Convert</p>
+      <h1>JSON ⇄ CSV Converter</h1>
+      <p class="lede">Paste or upload JSON to get CSV, or CSV to get JSON. Quoting, embedded commas, newlines and nested objects are all handled, and nothing leaves your browser.</p>
+    </div>
+
+    <section class="panel conv-panel">
+
+      <div class="conv-controls">
+        <div class="seg" role="radiogroup" aria-label="Conversion direction">
+          <input type="radio" name="direction" id="dir-j2c" checked>
+          <label for="dir-j2c">JSON → CSV</label>
+          <input type="radio" name="direction" id="dir-c2j">
+          <label for="dir-c2j">CSV → JSON</label>
+        </div>
+
+        <div class="field">
+          <label for="delimiter">Delimiter</label>
+          <select id="delimiter">
+            <option value="," selected>Comma</option>
+            <option value=";">Semicolon</option>
+            <option value="tab">Tab</option>
+          </select>
+        </div>
+
+        <div class="conv-opts" id="opts-j2c">
+          <label class="opt"><input type="checkbox" id="opt-flatten" checked> Flatten nested objects</label>
+          <label class="opt"><input type="checkbox" id="opt-guard"> Spreadsheet-safe cells</label>
+        </div>
+
+        <div class="conv-opts" id="opts-c2j" hidden>
+          <label class="opt"><input type="checkbox" id="opt-headers" checked> First row is headers</label>
+          <label class="opt"><input type="checkbox" id="opt-pretty" checked> Pretty-print JSON</label>
+        </div>
+      </div>
+
+      <div class="conv-grid">
+
+        <div class="conv-pane field">
+          <label for="conv-in" id="conv-in-label">JSON input</label>
+          <textarea id="conv-in" spellcheck="false" aria-describedby="conv-err" placeholder='[&#10;  { "name": "Ada", "role": "Engineer" }&#10;]'></textarea>
+          <p class="field-error" id="conv-err" aria-live="polite" hidden></p>
+          <div class="btn-row">
+            <button type="button" class="btn btn-primary" id="btn-convert">Convert</button>
+            <label class="btn file-btn">Upload file<input type="file" id="conv-file" class="visually-hidden" accept=".json,.csv,.txt,application/json,text/csv,text/plain"></label>
+            <button type="button" class="btn" id="btn-clear">Clear</button>
+          </div>
+        </div>
+
+        <div class="conv-pane field">
+          <label for="conv-out" id="conv-out-label">CSV output</label>
+          <textarea id="conv-out" spellcheck="false" readonly placeholder="The result appears here."></textarea>
+          <p class="conv-stats" id="conv-stats" aria-live="polite"></p>
+          <div class="btn-row">
+            <button type="button" class="btn" id="btn-copy">Copy</button>
+            <button type="button" class="btn" id="btn-download">Download</button>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="form-note">Everything runs locally in your browser and nothing is uploaded. CSV to JSON keeps all values as strings so data like "007" isn't corrupted. "Spreadsheet-safe cells" prefixes cells starting with = + - @ with an apostrophe so Excel or Sheets won't run them as formulas. Turn it on when the CSV is headed for a spreadsheet.</p>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <span class="foot-mark" aria-hidden="true"></span>
+        <p class="foot-name">Harley Woods</p>
+        <p class="foot-sub">Software Development</p>
+      </div>
+      <div class="foot-text">
+        <p class="foot-strong">A personal project by Harley Woods.</p>
+        <p>All tools run entirely in your browser. Nothing you enter is uploaded or stored.</p>
+        <p>Provided "as is", without warranty of any kind. I accept no liability for any loss, damage, or costs arising from use of these tools or from decisions based on their output.</p>
+        <p><a class="foot-gh" href="https://github.com/woodsdev">github.com/woodsdev</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/pages/json-csv/script.js"></script>
+</body>
+</html>

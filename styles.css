@@ -629,6 +629,57 @@ h1 {
   color: var(--accent-ink);
 }
 
+/* ---- converter (json-csv) ---- */
+
+.conv-panel {
+  padding: 28px;
+}
+
+.conv-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px dashed var(--line);
+}
+
+.conv-controls .field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.conv-controls .field label {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.conv-controls .field select {
+  width: auto;
+}
+
+.conv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.conv-pane textarea {
+  min-height: 280px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.conv-stats {
+  margin: 8px 0 0;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-soft);
+}
+
 /* ---- mini calculators (percentage) ---- */
 
 .mini-grid {
@@ -761,6 +812,10 @@ footer {
   .layout {
     grid-template-columns: minmax(0, 1fr);
   }
+
+  .conv-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 560px) {
@@ -771,6 +826,10 @@ footer {
   .hub-grid,
   .mini-grid {
     grid-template-columns: 1fr;
+  }
+
+  .conv-pane textarea {
+    min-height: 220px;
   }
 
   .foot-inner {
@@ -787,6 +846,7 @@ footer {
 
   .form-panel,
   .quote,
+  .conv-panel,
   .mini,
   .tool-card {
     padding: 20px;
