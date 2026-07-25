@@ -324,7 +324,13 @@ h1 {
 
 /* ---- buttons ---- */
 
+/* inline-flex + fixed line-height keep <button> and <label> pills the
+   same height (labels otherwise inherit the body line-height). */
 .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 500;
@@ -364,12 +370,20 @@ h1 {
 .btn-row {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 10px;
   margin-top: 12px;
 }
 
 .file-btn {
-  display: inline-block;
+  display: inline-flex;
+}
+
+/* Undo the .field label styling when a label doubles as a button
+   (the file picker), or its height drifts from the real buttons. */
+.field label.btn {
+  margin-bottom: 0;
+  font-size: 12px;
 }
 
 .file-btn:focus-within {
