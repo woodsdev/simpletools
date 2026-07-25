@@ -97,17 +97,17 @@ body {
   color: inherit;
 }
 
-/* hw-mark.png (720x564, flat colour on transparency) is used as a mask so
+/* logo.png (720x564, flat colour on transparency) is used as a mask so
    the monogram takes the page accent colour. Regenerate it if
-   assets/images/_harleywoods_logo_with_text_no_bg.png changes. */
+   assets/images/logo-full.png changes. */
 .logo-mark {
   display: block;
   height: 36px;
   aspect-ratio: 720 / 564;
   flex: none;
   background: var(--accent);
-  -webkit-mask: url(/assets/images/hw-mark.png) no-repeat center / contain;
-  mask: url(/assets/images/hw-mark.png) no-repeat center / contain;
+  -webkit-mask: url(/assets/images/logo.png) no-repeat center / contain;
+  mask: url(/assets/images/logo.png) no-repeat center / contain;
 }
 
 .wordmark {
@@ -778,8 +778,8 @@ footer {
   width: 84px;
   aspect-ratio: 720 / 564;
   background: var(--accent);
-  -webkit-mask: url(/assets/images/hw-mark.png) no-repeat center / contain;
-  mask: url(/assets/images/hw-mark.png) no-repeat center / contain;
+  -webkit-mask: url(/assets/images/logo.png) no-repeat center / contain;
+  mask: url(/assets/images/logo.png) no-repeat center / contain;
 }
 
 .foot-name {
