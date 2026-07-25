@@ -294,6 +294,131 @@ h1 {
   color: var(--ink-soft);
 }
 
+/* ---- buttons ---- */
+
+.btn {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  background: #ffffff;
+  border: 1px solid var(--field-line);
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s, color 0.15s;
+}
+
+.btn:hover {
+  border-color: #b9cbd8;
+  background: var(--tint);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.btn-primary {
+  color: #ffffff;
+  background: var(--accent-ink);
+  border-color: var(--accent-ink);
+}
+
+.btn-primary:hover {
+  background: var(--accent-ink);
+  border-color: var(--accent-ink);
+  filter: brightness(1.12);
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.file-btn {
+  display: inline-block;
+}
+
+.file-btn:focus-within {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 2px;
+}
+
+/* ---- segmented control (radio-based) ---- */
+
+.seg {
+  display: inline-flex;
+  padding: 3px;
+  gap: 3px;
+  background: #ffffff;
+  border: 1px solid var(--field-line);
+  border-radius: 10px;
+}
+
+.seg input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.seg label {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  padding: 7px 12px;
+  border-radius: 7px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.seg label:hover {
+  color: var(--ink);
+}
+
+.seg input:checked + label {
+  color: var(--accent-ink);
+  background: var(--tint);
+}
+
+.seg input:focus-visible + label {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 2px;
+}
+
+/* ---- checkbox options ---- */
+
+.opt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.opt input {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  accent-color: var(--accent-ink);
+  cursor: pointer;
+}
+
+.conv-opts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 /* ---- quote slip ---- */
 
 .quote {
