@@ -58,6 +58,7 @@ index.html         hub page
 styles.css         shared styles for every page
 pages/<tool>/      one folder per tool (index.html + script.js)
 assets/images/     logo files
+assets/nav.js      dropdown toggling for the shared nav
 nginx.conf         server config, including the CSP
 ```
 

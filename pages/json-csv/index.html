@@ -20,13 +20,28 @@
     </a>
     <nav class="site-nav" aria-label="Tools">
       <a href="/">Home</a>
-      <a href="/pages/coterm-pricing/">Co-term Pricing</a>
-      <a href="/pages/markup-margin/">Markup &amp; Margin</a>
-      <a href="/pages/tenant-id/">Tenant ID</a>
-      <a href="/pages/percentage/">Percentages</a>
-      <a href="/pages/json-csv/" aria-current="page">JSON ⇄ CSV</a>
-      <a href="/pages/json-beautifier/">JSON Beautifier</a>
-      <a href="/pages/comment-remover/">Comment Remover</a>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">Calculators</button>
+        <div class="nav-menu">
+          <a href="/pages/coterm-pricing/">Co-term Pricing</a>
+          <a href="/pages/markup-margin/">Markup &amp; Margin</a>
+          <a href="/pages/percentage/">Percentages</a>
+        </div>
+      </div>
+      <div class="nav-group current">
+        <button type="button" aria-haspopup="true" aria-expanded="false">Formatters</button>
+        <div class="nav-menu">
+          <a href="/pages/json-csv/" aria-current="page">JSON ⇄ CSV</a>
+          <a href="/pages/json-beautifier/">JSON Beautifier</a>
+          <a href="/pages/comment-remover/">Comment Remover</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">Lookups</button>
+        <div class="nav-menu">
+          <a href="/pages/tenant-id/">Tenant ID</a>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -114,5 +129,6 @@
   </footer>
 
   <script src="/pages/json-csv/script.js"></script>
+  <script src="/assets/nav.js"></script>
 </body>
 </html>
