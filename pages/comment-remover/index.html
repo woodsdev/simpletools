@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Code Comment Remover • woodsdev</title>
+  <meta name="description" content="Strip every comment out of a chunk of code, entirely in your browser. Detects the language automatically.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%2384cc16'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="theme-lime">
+
+  <header class="site-head">
+    <a class="brand" href="/">
+      <span class="logo-mark" role="img" aria-label="Harley Woods Software Development"></span>
+      <span class="wordmark"><strong>woodsdev</strong><span class="sep" aria-hidden="true"></span>Simple Tools</span>
+    </a>
+    <nav class="site-nav" aria-label="Tools">
+      <a href="/">Home</a>
+      <a href="/pages/json-csv/">JSON ⇄ CSV</a>
+      <a href="/pages/json-beautifier/">JSON Beautifier</a>
+      <a href="/pages/markup-margin/">Markup &amp; Margin</a>
+      <a href="/pages/percentage/">Percentages</a>
+      <a href="/pages/coterm-pricing/">Co-term Pricing</a>
+      <a href="/pages/tenant-id/">Tenant ID</a>
+      <a href="/pages/comment-remover/" aria-current="page">Comment Remover</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="intro">
+      <p class="eyebrow">Code · Comments</p>
+      <h1>Code Comment Remover</h1>
+      <p class="lede">Paste some code and every comment is stripped out. The language is detected automatically, and you can pick it yourself if the guess is wrong.</p>
+    </div>
+
+    <section class="panel conv-panel">
+
+      <div class="conv-controls">
+        <div class="field">
+          <label for="language">Language</label>
+          <select id="language">
+            <option value="auto" selected>Auto-detect</option>
+            <option value="javascript">JavaScript / TypeScript</option>
+            <option value="c-family">C / C++ / C# / Java / Go / Rust</option>
+            <option value="python">Python</option>
+            <option value="html">HTML / XML</option>
+            <option value="css">CSS</option>
+            <option value="sql">SQL</option>
+            <option value="shell">Shell / Bash</option>
+            <option value="ruby">Ruby</option>
+            <option value="yaml">YAML</option>
+            <option value="lua">Lua</option>
+            <option value="php">PHP</option>
+          </select>
+        </div>
+
+        <div class="conv-opts">
+          <label class="opt"><input type="checkbox" id="opt-tidy" checked> Remove emptied lines</label>
+        </div>
+      </div>
+
+      <div class="conv-grid">
+
+        <div class="conv-pane field">
+          <label for="cr-in">Code input</label>
+          <textarea id="cr-in" spellcheck="false" aria-describedby="cr-err" placeholder="function greet(name) {&#10;  // say hello&#10;  return 'Hello ' + name;&#10;}"></textarea>
+          <p class="field-error" id="cr-err" aria-live="polite" hidden></p>
+          <div class="btn-row">
+            <button type="button" class="btn btn-primary" id="btn-remove">Remove comments</button>
+            <label class="btn file-btn">Upload file<input type="file" id="cr-file" class="visually-hidden"></label>
+            <button type="button" class="btn" id="btn-clear">Clear</button>
+          </div>
+        </div>
+
+        <div class="conv-pane field">
+          <label for="cr-out">Output</label>
+          <textarea id="cr-out" spellcheck="false" readonly placeholder="The result appears here."></textarea>
+          <p class="conv-stats" id="cr-stats" aria-live="polite"></p>
+          <div class="btn-row">
+            <button type="button" class="btn" id="btn-copy">Copy</button>
+            <button type="button" class="btn" id="btn-download">Download</button>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="form-note">Everything runs locally in your browser and nothing is uploaded. Strings are left alone, so a hash or slashes inside quotes are safe, and Python docstrings stay put because they are strings, not comments. Auto-detect makes a best guess from the shape of the code; pick the language yourself if it guesses wrong.</p>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <span class="foot-mark" aria-hidden="true"></span>
+        <p class="foot-name">Harley Woods</p>
+        <p class="foot-sub">Software Development</p>
+      </div>
+      <div class="foot-text">
+        <p class="foot-strong">A personal project by Harley Woods.</p>
+        <p>All tools run entirely in your browser. Nothing you enter is uploaded or stored.</p>
+        <p>Provided "as is", without warranty of any kind. I accept no liability for any loss, damage, or costs arising from use of these tools or from decisions based on their output.</p>
+        <p><a class="foot-gh" target="_blank" href="https://github.com/woodsdev">github.com/woodsdev</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/pages/comment-remover/script.js"></script>
+</body>
+</html>

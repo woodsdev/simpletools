@@ -10,6 +10,7 @@ Current tools:
 - Percentage calculators
 - Co-term pricing calculator
 - Microsoft tenant ID lookup
+- Code comment remover
 
 All the logic runs client side and nothing goes through a server of mine. The only tool that talks to the outside world is the tenant ID lookup, which queries Microsoft's public login endpoint directly from your browser.
 

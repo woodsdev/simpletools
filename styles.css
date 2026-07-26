@@ -65,6 +65,14 @@
   --tint-line: #e6d4f8;
 }
 
+.theme-lime {
+  --accent: #84cc16;
+  --accent-ink: #4d7c0f;
+  --accent-rgb: 132, 204, 22;
+  --tint: #f5fbea;
+  --tint-line: #e0f1bb;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -717,6 +725,7 @@ h1 {
   display: flex;
   align-items: center;
   gap: 8px;
+  max-width: 100%;
 }
 
 .conv-controls .field label {
@@ -724,8 +733,11 @@ h1 {
   white-space: nowrap;
 }
 
+/* Let a select with long options shrink instead of overflowing on phones. */
 .conv-controls .field select {
   width: auto;
+  min-width: 0;
+  flex: 0 1 auto;
 }
 
 .conv-grid {
