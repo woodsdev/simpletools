@@ -554,10 +554,12 @@ h1 {
 
 .qrow dd {
   margin: 0;
+  min-width: 0;
   font-family: var(--mono);
   font-size: 14px;
   font-variant-numeric: tabular-nums;
   text-align: right;
+  overflow-wrap: anywhere;
 }
 
 /* Receipt tear line: white notches punched into the slip's edges.
@@ -610,6 +612,14 @@ h1 {
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
   color: var(--accent-ink);
+}
+
+/* For long values like GUIDs. Plex Mono is 0.6em per character, so 15px
+   keeps a 36-character GUID on one line in the 380px slip. */
+.total-value.long {
+  font-size: 15px;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
 }
 
 .below-cost {
@@ -920,6 +930,10 @@ footer {
   .tear {
     margin-left: -21px;
     margin-right: -21px;
+  }
+
+  .total-value.long {
+    font-size: 13.5px;
   }
 }
 
